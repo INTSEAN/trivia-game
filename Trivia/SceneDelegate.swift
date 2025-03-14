@@ -16,7 +16,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-    guard let _ = (scene as? UIWindowScene) else { return }
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+    
+    // Create a new window with the window scene
+    let window = UIWindow(windowScene: windowScene)
+    
+    // Create an instance of your TriviaViewController
+    let triviaViewController = TriviaViewController()
+    
+    // Set the root view controller of the window to your TriviaViewController
+    window.rootViewController = triviaViewController
+    
+    // Make the window visible
+    window.makeKeyAndVisible()
+    
+    // Assign the window to the window property
+    self.window = window
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
